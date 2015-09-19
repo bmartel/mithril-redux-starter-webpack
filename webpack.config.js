@@ -2,23 +2,17 @@ var path = require('path');
 var webpack = require('webpack');
 var pkg = require('./package.json');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var DEBUG = process.env.NODE_ENV !== 'production';
 var util = require('util');
 var bourbon = require('node-neat').includePaths.map(function (sassPath) {
   return 'includePaths[]=' + sassPath;
 }).join('&');
 
-var entry = {
-  app: ['./app.js']
-};
-
-if (DEBUG) {
-  entry.app.unshift('webpack/hot/dev-server');
-}
 
 module.exports = {
   context: path.join(__dirname, 'src'),
-  entry: entry,
+  entry: {
+    app: ['./app.js']
+  },
   devtool: 'source-map',
   output: {
     path: path.resolve(pkg.config.buildDir),
@@ -55,12 +49,5 @@ module.exports = {
       'es6-promise': 'es6-promise',
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })
-  ],
-  devServer: {
-    contentBase: pkg.config.buildDir,
-    noInfo: true,
-    inline: true,
-    hot: true,
-    port: pkg.config.devPort
-  }
+  ]
 };

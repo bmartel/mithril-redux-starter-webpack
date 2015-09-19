@@ -3,13 +3,11 @@
   "version": "0.0.1",
   "description": "Mithril Redux + Webpack",
   "config": {
-    "buildDir": "./build",
-    "devPort": 9000,
-    "devHost": "localhost"
+    "buildDir": "./build"
   },
   "scripts": {
     "prewatch": "npm install",
-    "watch": "webpack-dev-server --content-base ./build/ --hot",
+    "watch": "webpack-dev-server --content-base ./build/ --inline --hot --port=9000",
     "build": "webpack -p --config ./webpack.config.js",
     "prebuild": "npm run clean",
     "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir"
