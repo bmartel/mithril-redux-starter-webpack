@@ -1,0 +1,48 @@
+{
+  "name": "mithril-redux-starter-webpack",
+  "version": "0.0.1",
+  "description": "Mithril Redux + Webpack",
+  "config": {
+    "buildDir": "./build",
+    "devPort": 9000,
+    "devHost": "localhost"
+  },
+  "scripts": {
+    "prewatch": "npm install",
+    "watch": "webpack-dev-server --content-base ./build/ --hot",
+    "build": "webpack -p --config ./webpack.config.js",
+    "prebuild": "npm run clean",
+    "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir"
+  },
+  "devDependencies": {
+    "babel-core": "^5.1.11",
+    "babel-eslint": "^1.0.12",
+    "babel-loader": "^5.0.0",
+    "babel-plugin-mjsx": "^1.0.3",
+    "babel-runtime": "^5.1.11",
+    "css-loader": "^0.18.0",
+    "es6-promise": "^3.0.2",
+    "exports-loader": "^0.6.2",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "fetch": "^0.3.6",
+    "file-loader": "^0.8.1",
+    "html-loader": "^0.2.3",
+    "imports-loader": "^0.6.4",
+    "json-loader": "^0.5.2",
+    "lodash": "^3.3.1",
+    "mithril": "^0.2.0",
+    "node-neat": "^1.7.2",
+    "node-sass": "^3.3.2",
+    "redux": "^3.0.0",
+    "redux-thunk": "^0.1.0",
+    "rimraf": "^2.3.2",
+    "sass-loader": "^2.0.1",
+    "style-loader": "^0.12.3",
+    "ud": "^2.0.1",
+    "webpack": "^1.9.5",
+    "webpack-dev-server": "^1.8.2"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  }
+}
