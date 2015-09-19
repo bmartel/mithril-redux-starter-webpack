@@ -1,20 +1,18 @@
-# mithril-redux-starter-hmr
+# mithril-redux-starter-webpack
 
 # using modules
 
 * [mithril](https://github.com/lhorie/mithril.js)
 * [redux](https://github.com/rackt/redux)
-* [browserify-hmr](https://npmjs.com/package/browserify-hmr)
-* [browserify](http://browserify.org)/[watchify](https://npmjs.com/package/watchify)
+* [webpack](https://npmjs.com/package/webpack)
 * [ud](https://github.com/AgentME/ud)
 
 # quick start
 
 ```
-$ npm install
 $ npm run watch
-$ open index.html
 ```
+and navigate to http://localhost:9000
 
 # commands
 
