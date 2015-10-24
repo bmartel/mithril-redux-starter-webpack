@@ -1,11 +1,12 @@
 # mithril-redux-starter-webpack
 
-# using modules
+# including modules
 
 * [mithril](https://github.com/lhorie/mithril.js)
-* [redux](https://github.com/rackt/redux)
+* [redux](https://github.com/rackt/redux) with [redux-logger](https://github.com/fcomb/redux-logger) and [redux-thunk](https://github.com/gaearon/redux-thunk)
 * [webpack](https://npmjs.com/package/webpack)
 * [ud](https://github.com/AgentME/ud)
+* [sass](http://sass-lang.com) with [bourbon](http://bourbon.io/) + [neat](http://neat.bourbon.io/)
 
 # quick start
 
