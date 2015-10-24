@@ -9,7 +9,7 @@ body {
   color: $font-color;
 }
 
-.counter {
+.home, .counter {
   overflow: hidden;
   background: $background;
   padding: 10px;
@@ -18,8 +18,14 @@ body {
 
   h1 {
     text-align: center;
+    word-wrap: break-word;
   }
-
+  input {
+    padding: 10px 7px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
   button {
     @include transition(all .2s);
     font-family: $font-family;

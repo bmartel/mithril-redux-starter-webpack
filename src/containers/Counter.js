@@ -1,11 +1,9 @@
 import m from 'mithril';
 import {bindActionCreators} from 'redux';
-import {connect} from '../../utils/mithril-redux';
-import {addCount} from '../../actions';
+import {connect} from '../utils/mithril-redux';
+import {addCount} from '../actions/counter';
 
-import './app.scss';
-
-class App {
+class Counter {
   controller (props) {
     const {dispatch} = props;
     this.actions = bindActionCreators({addCount}, dispatch);
@@ -26,6 +24,19 @@ class App {
   }
 }
 
-const AppInstance = connect((state) => state)(new App);
+/**
+ * Map the state to component props
+ *
+ * @param state
+ * @param ownProps
+ * @returns {{count: *}}
+ */
+function mapStateToProps(state, ownProps) {
+  const {count} = state;
 
-export default AppInstance;
+  return {
+    count
+  }
+}
+
+export default connect(mapStateToProps, new Counter);
