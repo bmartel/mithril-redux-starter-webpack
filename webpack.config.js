@@ -17,7 +17,7 @@ module.exports = {
   output: {
     path: path.resolve(pkg.config.buildDir),
     publicPath: '/',
-    filename: 'app.js'
+    filename: 'js/[name].js'
   },
   module: {
     loaders: [
@@ -44,7 +44,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('app.css'),
+    new ExtractTextPlugin('css/[name].css', {
+      publicPath: '/css/',
+      allChunks: true
+    }),
     new webpack.ProvidePlugin({
       'es6-promise': 'es6-promise',
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
