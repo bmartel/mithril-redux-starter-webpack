@@ -5,7 +5,7 @@ import {configureStore} from './store';
 import {initModule, defn} from './utils/redux-ud';
 
 import './index.html';
-import './app.scss';
+import './app.css';
 
 initModule(module);
 

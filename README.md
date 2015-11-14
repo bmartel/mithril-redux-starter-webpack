@@ -2,11 +2,19 @@
 
 # including modules
 
-* [mithril](https://github.com/lhorie/mithril.js)
-* [redux](https://github.com/rackt/redux) with [redux-logger](https://github.com/fcomb/redux-logger) and [redux-thunk](https://github.com/gaearon/redux-thunk)
-* [webpack](https://npmjs.com/package/webpack)
-* [ud](https://github.com/AgentME/ud)
-* [sass](http://sass-lang.com) with [bourbon](http://bourbon.io/) + [neat](http://neat.bourbon.io/)
+1. [mithril](https://github.com/lhorie/mithril.js)
+2. [redux](https://github.com/rackt/redux) with:
+  * [logger](https://github.com/fcomb/redux-logger)
+  * [thunk](https://github.com/gaearon/redux-thunk)
+3. [webpack](https://npmjs.com/package/webpack)
+4. [ud](https://github.com/AgentME/ud)
+5. [postcss](https://github.com/postcss/postcss) with:
+  * [cssnext](https://github.com/cssnext/postcss-cssnext)
+  * [import](https://github.com/postcss/postcss-import)
+  * [extend](https://github.com/travco/postcss-extend)
+  * [functions](https://github.com/andyjansson/postcss-functions)
+  * [bem](https://github.com/ileri/postcss-bem)
+  * [lost grid](https://github.com/corysimmons/lost)
 
 # quick start
 
