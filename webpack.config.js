@@ -3,9 +3,6 @@ var webpack = require('webpack');
 var pkg = require('./package.json');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var util = require('util');
-var bourbon = require('node-neat').includePaths.map(function (sassPath) {
-  return 'includePaths[]=' + sassPath;
-}).join('&');
 
 
 module.exports = {
@@ -17,14 +14,14 @@ module.exports = {
   output: {
     path: path.resolve(pkg.config.buildDir),
     publicPath: '/',
-    filename: 'js/[name].js'
+    filename: '[name].js'
   },
   module: {
     loaders: [
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass?' + bourbon)
+        loader: ExtractTextPlugin.extract('style', 'css!postcss')
       },
       {
         test: /\.js$/,
@@ -43,8 +40,16 @@ module.exports = {
       }
     ]
   },
+  postcss: [
+    require('postcss-import'),
+    require('postcss-extend'),
+    require('postcss-functions'),
+    require('postcss-cssnext'),
+    require('postcss-bem'),
+    require('lost')
+  ],
   plugins: [
-    new ExtractTextPlugin('css/[name].css', {
+    new ExtractTextPlugin('[name].css', {
       publicPath: '/css/',
       allChunks: true
     }),

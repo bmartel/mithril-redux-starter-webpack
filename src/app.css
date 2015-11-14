@@ -1,0 +1,44 @@
+
+:root {
+  --bgColor: rgb(231, 231, 231);
+  --fontColor: rgb(60, 60, 60);
+  --fontFamily: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-family: var(--fontFamily);
+  color: var(--fontColor);
+}
+
+.home, .counter {
+  overflow: hidden;
+  background: var(--bgColor);
+  padding: 10px;
+  max-width: 200px;
+  margin: 0 auto;
+
+  @nest & h1 {
+    text-align: center;
+    word-wrap: break-word;
+  }
+  @nest & input {
+    padding: 10px 7px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  @nest & button {
+    transition: all .2s ease;
+    font-family: var(--fontFamily);
+    color: color(var(--fontColor) l(+ 35%));
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid color(var(--bgColor) l(- 6%));
+    border-radius: 3px;
+    padding: 7px 9px;
+    outline: none;
+    background: color(var(--bgColor) l(+ 10%));
+    @nest &:hover { background: color(var(--bgColor) l(- 6%)); }
+    @nest &:active { background: color(var(--bgColor) l(- 6%)); }
+  }
+}
