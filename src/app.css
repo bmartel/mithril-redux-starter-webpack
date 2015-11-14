@@ -1,6 +1,7 @@
 
 :root {
   --bgColor: rgb(231, 231, 231);
+  --buttonBgColor: #0ee006;
   --fontColor: rgb(60, 60, 60);
   --fontFamily: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -16,7 +17,23 @@ body {
   padding: 10px;
   max-width: 200px;
   margin: 0 auto;
+  text-align: center;
 
+  @nest & a {
+    border: 1px solid #adadad;
+    text-decoration: none;
+    color: #969696;
+    padding: 6px 8px;
+    background: transparent;
+    transition: all .3s ease-in-out;
+    @nest &:hover {
+      color: #ededed;
+      background: #adadad;
+    }
+  }
+  @nest & img {
+    width: 100%;
+  }
   @nest & h1 {
     text-align: center;
     word-wrap: break-word;
@@ -30,15 +47,16 @@ body {
   @nest & button {
     transition: all .2s ease;
     font-family: var(--fontFamily);
-    color: color(var(--fontColor) l(+ 35%));
     font-size: 14px;
     cursor: pointer;
-    border: 1px solid color(var(--bgColor) l(- 6%));
+    border: 1px solid color(var(--buttonBgColor) l(- 6%));
     border-radius: 3px;
     padding: 7px 9px;
     outline: none;
-    background: color(var(--bgColor) l(+ 10%));
-    @nest &:hover { background: color(var(--bgColor) l(- 6%)); }
-    @nest &:active { background: color(var(--bgColor) l(- 6%)); }
+    color: #ffffff;
+    background: var(--buttonBgColor);
+    @nest &:hover {
+      background: color(var(--buttonBgColor) l(- 8%));
+    }
   }
 }

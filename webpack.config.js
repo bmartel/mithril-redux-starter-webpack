@@ -3,24 +3,45 @@ var webpack = require('webpack');
 var pkg = require('./package.json');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var util = require('util');
-
+var isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  devtool: isProd ? '' : 'sourcemap',
   context: path.join(__dirname, 'src'),
   entry: {
     app: ['./app.js']
   },
-  devtool: 'source-map',
   output: {
     path: path.resolve(pkg.config.buildDir),
     publicPath: '/',
     filename: '[name].js'
   },
   module: {
+    postLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'baggage?[file].html=template&[file].css',
+      }
+    ],
     loaders: [
       {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/font-woff&prefix=fonts'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/octet-stream&prefix=fonts'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/vnd.ms-fontobject&prefix=fonts'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=image/svg+xml&prefix=fonts'
+      },
+      {
         test: /\.css$/,
-        exclude: /node_modules/,
         loader: ExtractTextPlugin.extract('style', 'css!postcss')
       },
       {
@@ -31,12 +52,14 @@ module.exports = {
       {
         test: /\.html$/,
         exclude: /node_modules/,
-        loader: 'file?name=[path][name].[ext]'
+        loader: 'file?name=[path]index.[ext]'
       },
       {
-        test: /\.jpe?g$|\.svg$|\.png$/,
-        exclude: /node_modules/,
-        loader: 'file?name=[path][name].[ext]'
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[path][hash].[ext]',
+          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+        ]
       }
     ]
   },
@@ -46,16 +69,24 @@ module.exports = {
     require('postcss-functions'),
     require('postcss-cssnext'),
     require('postcss-bem'),
+    require('rucksack-css'),
     require('lost')
   ],
   plugins: [
+    new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('[name].css', {
       publicPath: '/css/',
       allChunks: true
     }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new webpack.ProvidePlugin({
       'es6-promise': 'es6-promise',
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-    })
+    }),
+    new webpack.optimize.DedupePlugin()
   ]
 };

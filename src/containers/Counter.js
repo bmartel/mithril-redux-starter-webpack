@@ -19,6 +19,9 @@ class Counter {
         <button onclick={actions.addCount}>
           click me
         </button>
+        <p>
+          <a href="/" config={m.route}>Home <i class="fa fa-arrow-left"></i> </a>
+        </p>
       </div>
     );
   }

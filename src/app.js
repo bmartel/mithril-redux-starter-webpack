@@ -3,9 +3,7 @@ import Counter from './containers/Counter';
 import Home from './containers/Home';
 import {configureStore} from './store';
 import {initModule, defn} from './utils/redux-ud';
-
-import './index.html';
-import './app.css';
+import 'font-awesome/css/font-awesome.css';
 
 initModule(module);
 
