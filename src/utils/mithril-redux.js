@@ -1,6 +1,6 @@
 import m from 'mithril';
 
-class _Provider {
+class StateProvider {
   view (controller, props, children) {
     const Child = typeof children[0] === 'function' ?
       children[0]() : children[0];
@@ -9,7 +9,7 @@ class _Provider {
   }
 }
 
-export const Provider = new _Provider;
+export const Provider = new StateProvider;
 
 /**
  * Connect container component to redux
@@ -22,7 +22,6 @@ export function connect(selector, Component) {
     view (ctrl, props, children) {
       const {store: {dispatch, getState}, ...ownProps} = props;
       const state = selector(getState(), ownProps);
-
       return (<Component dispatch={dispatch} {...state} />);
     }
   });

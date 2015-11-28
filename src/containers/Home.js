@@ -10,8 +10,8 @@ class Home {
     this.actions = bindActionCreators({updateTitle}, dispatch);
   }
 
-  view (controller, props) {
-    const {actions} = controller;
+  view (ctrl, props) {
+    const {actions} = ctrl;
     const {page: {title}} = props;
 
     return (
@@ -27,19 +27,4 @@ class Home {
   }
 }
 
-/**
- * Map the state to component props
- *
- * @param state
- * @param ownProps
- * @returns {{page: *}}
- */
-function mapStateToProps(state, ownProps) {
-  const {page} = state;
-
-  return {
-    page
-  }
-}
-
-export default connect(mapStateToProps, new Home);
+export default connect((state, props) => state, new Home);

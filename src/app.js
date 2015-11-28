@@ -1,22 +1,21 @@
 import m from 'mithril';
+import {count} from './reducers/counter';
+import {page} from './reducers/page';
 import Counter from './containers/Counter';
 import Home from './containers/Home';
 import {configureStore} from './store';
-import {initModule, defn} from './utils/redux-ud';
 import 'font-awesome/css/font-awesome.css';
 
-initModule(module);
-
-const init = {};
-const store = configureStore(init);
+const store = configureStore({
+  page,
+  count
+});
 
 m.route.mode = 'hash';
 
-defn(() => {
-  return m.route(document.body, '/',
-    {
-      '/': <Home store={store} />,
-      '/counter': <Counter store={store} />
-    }
-  );
-})();
+m.route(document.getElementById('app'), '/',
+  {
+    '/': <Home store={store} />,
+    '/counter': <Counter store={store} />
+  }
+);

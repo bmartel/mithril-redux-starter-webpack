@@ -9,8 +9,8 @@ class Counter {
     this.actions = bindActionCreators({addCount}, dispatch);
   }
 
-  view (controller, props) {
-    const {actions} = controller;
+  view (ctrl, props) {
+    const {actions} = ctrl;
     const {count} = props;
 
     return (
@@ -27,19 +27,4 @@ class Counter {
   }
 }
 
-/**
- * Map the state to component props
- *
- * @param state
- * @param ownProps
- * @returns {{count: *}}
- */
-function mapStateToProps(state, ownProps) {
-  const {count} = state;
-
-  return {
-    count
-  }
-}
-
-export default connect(mapStateToProps, new Counter);
+export default connect((state, props) => state, new Counter);

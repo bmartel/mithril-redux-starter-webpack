@@ -26,19 +26,19 @@ module.exports = {
     loaders: [
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff&prefix=fonts'
+        loader: 'url?limit=5000&mimetype=application/font-woff&prefix=fonts'
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream&prefix=fonts'
+        loader: 'url?limit=5000&mimetype=application/octet-stream&prefix=fonts'
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/vnd.ms-fontobject&prefix=fonts'
+        loader: 'url?limit=5000&mimetype=application/vnd.ms-fontobject&prefix=fonts'
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml&prefix=fonts'
+        loader: 'url?limit=5000&mimetype=image/svg+xml&prefix=fonts'
       },
       {
         test: /\.css$/,
@@ -75,12 +75,12 @@ module.exports = {
   plugins: [
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('[name].css', {
-      publicPath: '/css/',
+      publicPath: '/',
       allChunks: true
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        'NODE_ENV': JSON.stringify(isProd ? 'production' : 'development')
       }
     }),
     new webpack.ProvidePlugin({

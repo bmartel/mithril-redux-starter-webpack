@@ -7,8 +7,7 @@
   * [logger](https://github.com/fcomb/redux-logger)
   * [thunk](https://github.com/gaearon/redux-thunk)
 3. [webpack](https://npmjs.com/package/webpack)
-4. [ud](https://github.com/AgentME/ud)
-5. [postcss](https://github.com/postcss/postcss) with:
+4. [postcss](https://github.com/postcss/postcss) with:
   * [cssnext](https://github.com/cssnext/postcss-cssnext)
   * [import](https://github.com/postcss/postcss-import)
   * [extend](https://github.com/travco/postcss-extend)
@@ -19,6 +18,7 @@
 # quick start
 
 ```
+$ npm install
 $ npm run watch
 ```
 and navigate to http://localhost:9000

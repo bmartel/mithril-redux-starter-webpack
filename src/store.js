@@ -1,16 +1,22 @@
-import {count} from './reducers/counter';
-import {page} from './reducers/page';
 import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
-import {configureUDStore, applyUDMiddleware} from './utils/redux-ud';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 
-const logger = createLogger();
-const reducers = {
-  page,
-  count
-};
+export function configureStore (reducers) {
 
-export function configureStore (init) {
-  const middleware = applyUDMiddleware(thunk, logger);
-  return configureUDStore({middleware, reducers, init});
+  /**
+   * Configure app middleware based on environment
+   */
+  const createStoreWithMiddleware = process.env.NODE_ENV == 'production' ?
+    applyMiddleware(thunk)(createStore) :
+    applyMiddleware(thunk, require('redux-logger')())(createStore);
+
+  /**
+   * Build app state defined by data reducers
+   */
+  const appState = combineReducers(reducers);
+
+  /**
+   * Create data store from the defined data shape
+   */
+  return createStoreWithMiddleware(appState);
 }
