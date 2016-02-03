@@ -1,30 +1,22 @@
 import m from 'mithril';
-import {bindActionCreators} from 'redux';
-import {connect} from '../utils/mithril-redux';
+import {connect, defaultMapStateToProps} from '../utils/mithril-redux';
 import {addCount} from '../actions/counter';
 
-class Counter {
-  controller (props) {
-    const {dispatch} = props;
-    this.actions = bindActionCreators({addCount}, dispatch);
-  }
-
+const Counter = {
   view (ctrl, props) {
-    const {actions} = ctrl;
-    const {count} = props;
+    const {config} = ctrl;
+    const {actions, count} = props;
 
-    return (
-      <div className="counter">
-        <h1> {count} clicked </h1>
-        <button onclick={actions.addCount}>
-          click me
-        </button>
-        <p>
-          <a href="/" config={m.route}>Home <i class="fa fa-arrow-left"></i> </a>
-        </p>
-      </div>
-    );
+    return m('.counter', {config}, [
+      m('h1', `${count} clicked`),
+      m('button', {onclick: actions.addCount}, 'click me'),
+      m('p',
+        m('a', {href: '/', config: m.route}, [
+          'Home ', m('i.fa.fa-arrow-left')
+        ])
+      )
+    ]);
   }
 }
 
-export default connect((state, props) => state, new Counter);
+export default connect(defaultMapStateToProps, {addCount})(Counter);

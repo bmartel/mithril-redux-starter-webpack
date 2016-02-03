@@ -1,4 +1,3 @@
 {
-  "stage": 0,
-  "plugins": [ "mjsx" ]
+   "presets": ["es2015", "stage-0"]
 }

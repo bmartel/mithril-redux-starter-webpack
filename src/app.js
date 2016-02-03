@@ -15,7 +15,7 @@ m.route.mode = 'hash';
 
 m.route(document.getElementById('app'), '/',
   {
-    '/': <Home store={store} />,
-    '/counter': <Counter store={store} />
+    '/': m(Home, {store}),
+    '/counter': m(Counter, {store})
   }
 );
