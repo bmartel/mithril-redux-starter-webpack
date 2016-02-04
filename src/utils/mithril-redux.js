@@ -1,5 +1,4 @@
 import m from 'mithril';
-import thunk from 'redux-thunk';
 import {
   createStore,
   applyMiddleware,
@@ -82,7 +81,7 @@ export const connectStore = (store) =>
         const prevStoreState = this.state();
         const storeState = mapStateToProps(this.store.getState(), this.ownProps());
 
-        if (shouldUpdate || prevStoreState !== storeState) {
+        if (shouldUpdate || !shallowEqual(prevStoreState, storeState)) {
           this.state(storeState);
           this.shouldComponentUpdate(true);
         }
@@ -111,14 +110,12 @@ export const connectStore = (store) =>
 /**
 * Configure store to use reducers/middleware
 */
-export const configureStore = (reducers) => {
+export const configureStore = (reducers, middleware=[]) => {
 
   /**
    * Configure app middleware based on environment
    */
-  const createStoreWithMiddleware = process.env.NODE_ENV == 'production' ?
-    applyMiddleware(thunk)(createStore) :
-    applyMiddleware(thunk, require('redux-logger')())(createStore);
+  const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
 
   /**
    * Build app state defined by data reducers
@@ -129,4 +126,29 @@ export const configureStore = (reducers) => {
    * Create data store from the defined data shape
    */
   return createStoreWithMiddleware(appState);
+}
+
+
+// Taken and modified from https://github.com/rackt/react-redux/blob/master/src/utils/shallowEqual.js
+// Check for props equality
+export function shallowEqual(objA, objB) {
+  if (objA === objB) return true;
+
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) return false;
+
+  // Test for A's keys different from B.
+  const hasOwn = Object.prototype.hasOwnProperty;
+
+  let i = keysA.length;
+  while(i--) {
+    if (
+      !hasOwn.call(objB, keysA[i]) ||
+      objA[keysA[i]] !== objB[keysA[i]]
+    ) return false;
+  }
+
+  return true;
 }
