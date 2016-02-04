@@ -1,5 +1,6 @@
 import m from 'mithril';
-import {connect} from '../utils/mithril-redux';
+import {connect} from '../store';
+import {defaultMapStateToProps} from '../utils/mithril-redux';
 import {updateTitle} from '../actions/page';
 import mReduxImage from '../img/m-redux.png';
 

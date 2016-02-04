@@ -1,5 +1,6 @@
 import m from 'mithril';
-import {connect, defaultMapStateToProps} from '../utils/mithril-redux';
+import {connect} from '../store';
+import {defaultMapStateToProps} from '../utils/mithril-redux';
 import {addCount} from '../actions/counter';
 
 const Counter = {

@@ -1,22 +1,11 @@
-import thunk from 'redux-thunk';
-import {createStore, applyMiddleware, combineReducers} from 'redux';
+import {configureStore, connectStore} from './utils/mithril-redux';
 
-export function configureStore (reducers) {
+import {count} from './reducers/counter';
+import {page} from './reducers/page';
 
-  /**
-   * Configure app middleware based on environment
-   */
-  const createStoreWithMiddleware = process.env.NODE_ENV == 'production' ?
-    applyMiddleware(thunk)(createStore) :
-    applyMiddleware(thunk, require('redux-logger')())(createStore);
+export const store = configureStore({
+  page,
+  count
+});
 
-  /**
-   * Build app state defined by data reducers
-   */
-  const appState = combineReducers(reducers);
-
-  /**
-   * Create data store from the defined data shape
-   */
-  return createStoreWithMiddleware(appState);
-}
+export const connect = connectStore(store);

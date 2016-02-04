@@ -1,26 +1,30 @@
 import m from 'mithril';
-import {bindActionCreators} from 'redux';
+import thunk from 'redux-thunk';
+import {
+  createStore,
+  applyMiddleware,
+  combineReducers,
+  bindActionCreators
+} from 'redux';
 
 export const defaultMapStateToProps = (state, props) => state;
-export const defaultConfig = (el, init, ctx) => {};
 
 /**
- * Connect container component to redux
+ * Connect container component to redux store
  *
  * @param selector
  * @returns {*}
  */
-export const connect = (mapStateToProps, mapActionCreators={}) => (component) => {
+export const connectStore = (store) =>
+  (mapStateToProps, mapActionCreators={}) => (component) => {
   return {
     controller(props) {
-      const {store, ...ownProps} = props;
-
       this.store = store;
-      this.ownProps = m.prop(ownProps || {});
+      this.ownProps = m.prop(props || {});
       this.state = m.prop({});
       this.shouldComponentUpdate = m.prop(true);
       this.unsubscribe = null;
-      this.actions = bindActionCreators(mapActionCreators, props.store.dispatch);
+      this.actions = bindActionCreators(mapActionCreators, this.store.dispatch);
       this.config = (el, init, ctx) => {
         ctx.onunload = () => {
           this.actions = null;
@@ -88,19 +92,41 @@ export const connect = (mapStateToProps, mapActionCreators={}) => (component) =>
     },
 
     view (ctrl, props, children) {
-      const {store, ...currentOwnProps} = props;
       const {config, actions, state, updateOwnProps, shouldComponentUpdate} = ctrl;
 
-      updateOwnProps(currentOwnProps);
+      updateOwnProps(props);
       const shouldUpdate = shouldComponentUpdate();
       const storeProps = state();
       shouldComponentUpdate(false);
 
       if (shouldUpdate) {
-        return m(component, {actions, ...storeProps, ...currentOwnProps}, children);
+        return m(component, {actions, ...storeProps, ...props}, children);
       }
 
       return {subtree: 'retain'};
     }
   }
+}
+
+/**
+* Configure store to use reducers/middleware
+*/
+export const configureStore = (reducers) => {
+
+  /**
+   * Configure app middleware based on environment
+   */
+  const createStoreWithMiddleware = process.env.NODE_ENV == 'production' ?
+    applyMiddleware(thunk)(createStore) :
+    applyMiddleware(thunk, require('redux-logger')())(createStore);
+
+  /**
+   * Build app state defined by data reducers
+   */
+  const appState = combineReducers(reducers);
+
+  /**
+   * Create data store from the defined data shape
+   */
+  return createStoreWithMiddleware(appState);
 }
