@@ -22,4 +22,4 @@ const Home = {
   }
 }
 
-export default connect(state => state.page, {updateTitle})(Home);
+export default connect((state, props) => state.page, {updateTitle})(Home);

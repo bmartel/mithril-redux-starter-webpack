@@ -6,7 +6,7 @@ import {
   bindActionCreators
 } from 'redux';
 
-export const defaultMapStateToProps = state => state;
+export const defaultMapStateToProps = (state, props) => state;
 
 /**
  * Connect container component to redux store
@@ -52,8 +52,8 @@ export const connectStore = (store) =>
 
       this.trySubscribe = () => {
         if (!this.isSubscribed()) {
-          this.unsubscribe = this.store.subscribe(this.handleUpdate);
-          this.handleUpdate();
+          this.unsubscribe = this.store.subscribe(this.handleUpdate.bind(this, props));
+          this.handleUpdate(props);
         }
       };
 
@@ -64,11 +64,11 @@ export const connectStore = (store) =>
         }
       };
 
-      this.handleUpdate = () => {
+      this.handleUpdate = (props) => {
         if (!this.isSubscribed()) return true;
 
         const prevStoreState = this.state();
-        const storeState = mapStateToProps(this.store.getState());
+        const storeState = mapStateToProps(this.store.getState(), props);
 
         if (!shallowEqual(prevStoreState, storeState)) {
           this.state(storeState);
