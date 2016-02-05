@@ -9,7 +9,7 @@ let middleware = [
 ];
 
 if(process.env.NODE_ENV != 'production') {
-    middleware.push(require('redux-logger')());
+  middleware.push(require('redux-logger')());
 }
 
 export const store = configureStore({

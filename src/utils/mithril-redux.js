@@ -6,7 +6,7 @@ import {
   bindActionCreators
 } from 'redux';
 
-export const defaultMapStateToProps = (state, props) => state;
+export const defaultMapStateToProps = state => state;
 
 /**
  * Connect container component to redux store
@@ -19,7 +19,6 @@ export const connectStore = (store) =>
   return {
     controller(props) {
       this.store = store;
-      this.ownProps = m.prop(props || {});
       this.state = m.prop({});
       this.shouldComponentUpdate = m.prop(true);
       this.unsubscribe = null;
@@ -28,7 +27,6 @@ export const connectStore = (store) =>
         ctx.onunload = () => {
           this.actions = null;
           this.store = null;
-          this.ownProps({});
           this.state({});
           this.shouldComponentUpdate(false);
           this.tryUnsubscribe();
@@ -66,22 +64,13 @@ export const connectStore = (store) =>
         }
       };
 
-      this.updateOwnProps = (currentProps) => {
-        const prevOwnProps = this.ownProps();
-        if(currentProps !== prevOwnProps) {
-          this.ownProps(currentProps);
-          this.shouldComponentUpdate(true);
-        }
-      };
-
       this.handleUpdate = () => {
         if (!this.isSubscribed()) return true;
 
-        const shouldUpdate = this.shouldComponentUpdate();
         const prevStoreState = this.state();
-        const storeState = mapStateToProps(this.store.getState(), this.ownProps());
+        const storeState = mapStateToProps(this.store.getState());
 
-        if (shouldUpdate || !shallowEqual(prevStoreState, storeState)) {
+        if (!shallowEqual(prevStoreState, storeState)) {
           this.state(storeState);
           this.shouldComponentUpdate(true);
         }
@@ -91,15 +80,13 @@ export const connectStore = (store) =>
     },
 
     view (ctrl, props, children) {
-      const {config, actions, state, updateOwnProps, shouldComponentUpdate} = ctrl;
-
-      updateOwnProps(props);
+      const {config, actions, state, shouldComponentUpdate} = ctrl;
       const shouldUpdate = shouldComponentUpdate();
-      const storeProps = state();
       shouldComponentUpdate(false);
 
       if (shouldUpdate) {
-        return m(component, {actions, ...storeProps, ...props}, children);
+        const storeProps = state();
+        return m(component, {actions, ...storeProps}, children);
       }
 
       return {subtree: 'retain'};
@@ -127,7 +114,6 @@ export const configureStore = (reducers, middleware=[]) => {
    */
   return createStoreWithMiddleware(appState);
 }
-
 
 // Taken and modified from https://github.com/rackt/react-redux/blob/master/src/utils/shallowEqual.js
 // Check for props equality
