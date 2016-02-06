@@ -1,4 +1,4 @@
-import {configureStore, connectStore} from './utils/mithril-redux';
+import {configureStore, connectStore} from 'midux';
 import thunk from 'redux-thunk';
 
 import {count} from './reducers/counter';
