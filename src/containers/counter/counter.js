@@ -1,14 +1,15 @@
 import m from 'mithril';
-import {connect} from '../store';
 import {defaultMapStateToProps} from 'midux';
-import {addCount} from '../actions/counter';
+
+import {connect} from '../../store';
+import {addCount} from '../../actions/counter';
 
 const Counter = {
   view (ctrl, props) {
     const {config} = ctrl;
     const {actions, count} = props;
 
-    return m('.counter', {config}, [
+    return m('.Counter', {config}, [
       m('h1', `${count} clicked`),
       m('button', {onclick: actions.addCount}, 'click me'),
       m('p',

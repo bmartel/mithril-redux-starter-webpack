@@ -1,0 +1,51 @@
+@import "../../styles/variables.css";
+
+.Counter {
+  overflow: hidden;
+  background: var(--bgColor);
+  padding: 10px;
+  max-width: 200px;
+  margin: 0 auto;
+  text-align: center;
+
+  @nest & a {
+    border: 1px solid #adadad;
+    text-decoration: none;
+    color: #969696;
+    padding: 6px 8px;
+    background: transparent;
+    transition: all .3s ease-in-out;
+    @nest &:hover {
+      color: #ededed;
+      background: #adadad;
+    }
+  }
+  @nest & img {
+    width: 100%;
+  }
+  @nest & h1 {
+    text-align: center;
+    word-wrap: break-word;
+  }
+  @nest & input {
+    padding: 10px 7px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  @nest & button {
+    transition: all .2s ease;
+    font-family: var(--fontFamily);
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid color(var(--buttonBgColor) l(- 6%));
+    border-radius: 3px;
+    padding: 7px 9px;
+    outline: none;
+    color: #ffffff;
+    background: var(--buttonBgColor);
+    @nest &:hover {
+      background: color(var(--buttonBgColor) l(- 8%));
+    }
+  }
+}

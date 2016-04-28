@@ -1,7 +1,7 @@
 import m from 'mithril';
-import Counter from './containers/Counter';
-import Home from './containers/Home';
-import 'font-awesome/css/font-awesome.css';
+
+import Counter from './containers/counter/counter';
+import Home from './containers/home/home';
 
 m.route.mode = 'hash';
 
