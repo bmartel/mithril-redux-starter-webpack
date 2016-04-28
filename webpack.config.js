@@ -68,7 +68,6 @@ module.exports = {
     require('postcss-extend'),
     require('postcss-functions'),
     require('postcss-cssnext'),
-    require('postcss-bem'),
     require('rucksack-css'),
     require('lost')
   ],
