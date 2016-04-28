@@ -12,7 +12,6 @@
   * [import](https://github.com/postcss/postcss-import)
   * [extend](https://github.com/travco/postcss-extend)
   * [functions](https://github.com/andyjansson/postcss-functions)
-  * [bem](https://github.com/ileri/postcss-bem)
   * [lost grid](https://github.com/corysimmons/lost)
 
 # quick start
