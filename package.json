@@ -1,6 +1,6 @@
 {
   "name": "mithril-redux-starter-webpack",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "Mithril Redux + Webpack",
   "config": {
     "buildDir": "./dist"
@@ -36,7 +36,7 @@
     "json-loader": "^0.5.4",
     "lodash": "^4.13.1",
     "lost": "^6.8.1",
-    "midux": "0.0.1",
+    "midux": "0.1.6",
     "mithril": "^0.2.5",
     "postcss": "^5.0.21",
     "postcss-cssnext": "^2.6.0",
