@@ -6,10 +6,9 @@ import {addCount} from '../../actions/counter';
 
 const Counter = {
   view (ctrl, props) {
-    const {config} = ctrl;
     const {actions, count} = props;
 
-    return m('.Counter', {config}, [
+    return m('.Counter', [
       m('h1', `${count} clicked`),
       m('button', {onclick: actions.addCount}, 'click me'),
       m('p',

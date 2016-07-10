@@ -7,10 +7,9 @@ import mReduxImage from '../../img/m-redux.png';
 
 const Home = {
   view (ctrl, props) {
-    const {config} = ctrl;
     const {title, actions} = props;
 
-    return m('.Home', {config}, [
+    return m('.Home', [
       m('img', {src: mReduxImage, alt: 'Mithril Redux'}),
       m('h1', title),
       m('input', {oninput: (e) => actions.updateTitle(e.target.value), value: title}),
