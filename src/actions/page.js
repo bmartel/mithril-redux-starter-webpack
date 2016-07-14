@@ -1,8 +1,8 @@
-import {UPDATE_TITLE} from '../constants/page';
+import { UPDATE_TITLE } from '../constants/page';
 
-export function updateTitle (title) {
+export function updateTitle(title) {
   return {
     type: UPDATE_TITLE,
-    title
+    title,
   };
 }

@@ -8,6 +8,6 @@ m.route.mode = 'hash';
 m.route(document.getElementById('app'), '/',
   {
     '/': m(Home),
-    '/counter': m(Counter)
+    '/counter': m(Counter),
   }
 );
