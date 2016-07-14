@@ -1,6 +1,6 @@
 {
   "name": "mithril-redux-starter-webpack",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Mithril Redux + Webpack",
   "config": {
     "buildDir": "./dist"
