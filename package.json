@@ -43,7 +43,7 @@
     "json-loader": "^0.5.4",
     "lodash": "^4.13.1",
     "lost": "^7.0.3",
-    "midux": "^0.1.8",
+    "midux": "0.1.7",
     "mithril": "^0.2.5",
     "postcss": "^5.1.0",
     "postcss-cssnext": "^2.7.0",
