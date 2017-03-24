@@ -3796,9 +3796,9 @@ micromatch@^2.1.5, micromatch@^2.3.11, micromatch@^2.3.7:
     parse-glob "^3.0.4"
     regex-cache "^0.4.2"
 
-midux@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/midux/-/midux-1.0.2.tgz#b90b9600935a6f9cabf154141c4ecb63ea2610bf"
+midux@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/midux/-/midux-1.0.3.tgz#7f928bcc4f4ad7d03fbc7eba671880ab5c0b15ba"
 
 miller-rabin@^4.0.0:
   version "4.0.0"
