@@ -1,20 +1,21 @@
-import { configureStore, connectStore } from 'midux';
-import thunk from 'redux-thunk';
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
+import { configureStore, connectStore } from 'midux'
 
-import { count } from './reducers/counter';
-import { page } from './reducers/page';
+import { count } from './reducers/counter'
+import { page } from './reducers/page'
 
 const middleware = [
   thunk,
-];
+]
 
 if (process.env.NODE_ENV !== 'production') {
-  middleware.push(require('redux-logger')()); // eslint-disable-line
+  middleware.push(logger)
 }
 
 export const store = configureStore({
   page,
   count,
-}, middleware);
+}, middleware)
 
-export const connect = connectStore(store);
+export const connect = connectStore(store)

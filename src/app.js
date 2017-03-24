@@ -1,13 +1,16 @@
-import m from 'mithril';
+import m from 'mithril'
 
-import Counter from './containers/counter/counter';
-import Home from './containers/home/home';
+import Counter from './containers/counter/counter'
+import Home from './containers/home/home'
 
-m.route.mode = 'hash';
+import './app.css'
+import './app.html'
 
-m.route(document.getElementById('app'), '/',
+m.route.mode = '#'
+
+m.route(document.getElementById('app'), '/', // eslint-disable-line
   {
-    '/': m(Home),
-    '/counter': m(Counter),
-  }
-);
+    '/': { view: () => m(Home) },
+    '/counter': { view: () => m(Counter) },
+  },
+)
