@@ -8,6 +8,5 @@ module.exports = {
     require('postcss-functions'),
     require('postcss-cssnext'),
     require('rucksack-css'),
-    require('lost'),
   ],
 }

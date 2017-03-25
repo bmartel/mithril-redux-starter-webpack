@@ -11,18 +11,18 @@
     "build": "NODE_ENV=production webpack -p --config ./webpack.config.js",
     "prebuild": "npm run clean",
     "clean": "rimraf $npm_package_config_buildDir && mkdir $npm_package_config_buildDir",
-    "test": "babel-node spec/support/test.js",
-    "lint": "eslint ./src ./spec"
+    "test": "mocha --compilers css:./test-compiler,js:babel-core/register --recursive",
+    "lint": "eslint ./src ./test"
   },
   "dependencies": {
     "fetch": "^1.1.0",
     "lodash": "^4.17.4",
-    "lost": "^8.0.0",
     "midux": "^1.0.3",
     "mithril": "^1.0.1",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "tachyons": "^4.6.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
@@ -33,6 +33,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "babel-register": "^6.24.0",
     "babel-runtime": "^6.23.0",
+    "chai": "^3.5.0",
     "css-loader": "^0.27.3",
     "es6-promise": "^4.1.0",
     "eslint": "^3.18.0",
@@ -46,9 +47,11 @@
     "html-loader": "^0.4.5",
     "image-webpack-loader": "^3.2.0",
     "imports-loader": "^0.7.1",
-    "jasmine": "^2.5.3",
-    "jasmine-expect": "^3.7.0",
+    "jsdom": "^9.12.0",
+    "jsdom-global": "^2.1.1",
     "json-loader": "^0.5.4",
+    "mithril-query": "^2.1.0",
+    "mocha": "^3.2.0",
     "postcss": "^5.2.16",
     "postcss-cssnext": "^2.10.0",
     "postcss-extend": "^1.0.5",
@@ -57,13 +60,13 @@
     "postcss-loader": "^1.3.3",
     "rimraf": "^2.6.1",
     "rucksack-css": "^0.9.1",
-    "sanitize.css": "^5.0.0",
+    "sinon": "^2.1.0",
     "style-loader": "^0.16.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.3.1",
     "webpack-dev-server": "^2.4.2"
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=7.6"
   }
 }

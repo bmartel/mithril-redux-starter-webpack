@@ -12,17 +12,18 @@
   * [import](https://github.com/postcss/postcss-import)
   * [extend](https://github.com/travco/postcss-extend)
   * [functions](https://github.com/andyjansson/postcss-functions)
-  * [lost grid](https://github.com/corysimmons/lost)
+  * [tachyons](https://github.com/tachyons-css/tachyons)
 
 # quick start
 
 ```
-$ npm install
-$ npm run watch
+$ yarn install
+$ yarn watch
 ```
 and navigate to http://localhost:9000
 
 # commands
 
-* `npm run build` - build js for production
-* `npm run watch` - automatically build js on file changes for development
+* `yarn build` - build js for production
+* `yarn watch` - automatically build js on file changes for development
+* `yarn lint` - lint all files
