@@ -16,6 +16,6 @@ if (process.env.NODE_ENV !== 'production') {
 export const store = configureStore({
   page,
   count,
-}, middleware)
+}, window.__INITIAL_STATE__, middleware) // eslint-disable-line
 
 export const connect = connectStore(store)
