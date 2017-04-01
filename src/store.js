@@ -2,8 +2,8 @@ import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import { configureStore, connectStore } from 'midux'
 
-import { count } from './reducers/counter'
-import { page } from './reducers/page'
+import count from './reducers/counter'
+import page from './reducers/page'
 
 const middleware = [
   thunk,

@@ -1,10 +1,8 @@
-import { ADD_COUNT, ADD_COUNT_K } from '../constants/counter';
+import { createReducer } from 'midux'
+import { ADD_COUNT } from '../actions/counter'
 
-export function count(state = 0, action) {
-  switch (action.type) {
-    case ADD_COUNT:
-      return state + action.inc * ADD_COUNT_K;
-    default:
-      return state;
-  }
-}
+const count = createReducer(0, {
+  [ADD_COUNT]: state => state + 1,
+})
+
+export default count

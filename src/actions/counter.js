@@ -1,8 +1,5 @@
-import { ADD_COUNT, ADD_COUNT_N } from '../constants/counter';
+import { makeActionCreator } from 'midux'
 
-export function addCount() {
-  return {
-    type: ADD_COUNT,
-    inc: ADD_COUNT_N,
-  };
-}
+export const ADD_COUNT = 'ADD_COUNT'
+
+export const addCount = makeActionCreator(ADD_COUNT)

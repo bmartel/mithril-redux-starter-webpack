@@ -1,3 +1,7 @@
-@import "./styles/tachyons.css";
-@import "./styles/colors.css";
-@import "./styles/media-queries.css";
+@import 'normalize.css';
+@import './styles/example-vars.css';
+
+body {
+  font-family: var(--font-family);
+  color: var(--font-color);
+}

@@ -1,13 +1,11 @@
-import { UPDATE_TITLE } from '../constants/page';
+import { createReducer } from 'midux'
+import { UPDATE_TITLE } from '../actions/page'
 
-export function page(state = {}, action) {
-  switch (action.type) {
-    case UPDATE_TITLE:
-      return {
-        ...state,
-        title: action.title,
-      };
-    default:
-      return state;
-  }
-}
+const page = createReducer({}, {
+  [UPDATE_TITLE]: (state, action) => ({
+    ...state,
+    title: action.title,
+  }),
+})
+
+export default page

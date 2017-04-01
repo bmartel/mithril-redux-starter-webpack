@@ -15,14 +15,15 @@
     "lint": "eslint ./src ./test"
   },
   "dependencies": {
-    "fetch": "^1.1.0",
     "lodash": "^4.17.4",
+    "lost": "^8.0.0",
     "midux": "^1.0.5",
     "mithril": "^1.0.1",
+    "normalize.css": "^6.0.0",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.0",
     "redux-thunk": "^2.2.0",
-    "tachyons": "^4.6.2"
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",

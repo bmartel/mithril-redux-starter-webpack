@@ -1,8 +1,5 @@
-import { UPDATE_TITLE } from '../constants/page';
+import { makeActionCreator } from 'midux'
 
-export function updateTitle(title) {
-  return {
-    type: UPDATE_TITLE,
-    title,
-  };
-}
+export const UPDATE_TITLE = 'UPDATE_TITLE'
+
+export const updateTitle = makeActionCreator(UPDATE_TITLE, 'title')
