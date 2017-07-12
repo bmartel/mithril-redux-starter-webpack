@@ -86,7 +86,7 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       'es6-promise': 'es6-promise',
-      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
     }),
   ],
 }
