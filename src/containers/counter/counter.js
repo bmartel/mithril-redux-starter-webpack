@@ -1,7 +1,6 @@
 import m from 'mithril'
-import { defaultMapStateToProps } from 'midux'
+import { defaultMapStateToProps, getConnect as connect } from 'midux'
 
-import { connect } from '../../store'
 import { addCount } from '../../actions/counter'
 
 import './counter.css'
@@ -22,4 +21,4 @@ const Counter = {
   },
 }
 
-export default connect(defaultMapStateToProps, { addCount })(Counter)
+export default connect()(defaultMapStateToProps, { addCount })(Counter)

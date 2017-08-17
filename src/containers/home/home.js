@@ -1,6 +1,6 @@
 import m from 'mithril'
+import { getConnect as connect } from 'midux'
 
-import { connect } from '../../store'
 import { updateTitle } from '../../actions/page'
 import mReduxImage from '../../img/m-redux.png'
 
@@ -26,4 +26,4 @@ const Home = {
   },
 }
 
-export default connect(state => state.page, { updateTitle })(Home)
+export default connect()(state => state.page, { updateTitle })(Home)

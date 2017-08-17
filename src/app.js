@@ -1,5 +1,6 @@
 import m from 'mithril'
 
+import './store'
 import Counter from './containers/counter/counter'
 import Home from './containers/home/home'
 
