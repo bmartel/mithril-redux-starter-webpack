@@ -1,17 +1,19 @@
-import m from 'mithril'
+import m from "mithril";
 
-import './store'
-import Counter from './containers/counter/counter'
-import Home from './containers/home/home'
+import "@/store";
+import Counter from "@/containers/counter";
+import Home from "@/containers/home";
 
-import './app.css'
-import './app.html'
+import "@/app.css";
+import "@/app.html";
 
-m.route.mode = '#'
+m.route.mode = "#";
 
-m.route(document.getElementById('app'), '/', // eslint-disable-line
+m.route(
+  document.getElementById("app"),
+  "/", // eslint-disable-line
   {
-    '/': { view: () => m(Home) },
-    '/counter': { view: () => m(Counter) },
-  },
-)
+    "/": { view: () => m(Home) },
+    "/counter": { view: () => m(Counter) }
+  }
+);
