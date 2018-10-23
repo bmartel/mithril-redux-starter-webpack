@@ -1,12 +1,21 @@
 const path = require("path");
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const PreloadWebpackPlugin = require("preload-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const pkg = require("./package.json");
 
 const isProd = process.env.NODE_ENV === "production";
 const resolve = dir => path.join(__dirname, dir);
 
+class TailwindExtractor {
+  static extract(content) {
+    return content.match(/[A-z0-9-:\/]+/g) || [];
+  }
+}
+
 module.exports = {
+  mode: process.env.NODE_ENV,
   devtool: isProd ? "" : "sourcemap",
   context: path.join(__dirname, "src"),
   entry: {
@@ -23,8 +32,15 @@ module.exports = {
       "@": resolve("src")
     }
   },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    },
+    runtimeChunk: "single"
+  },
+
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         loader:
@@ -46,10 +62,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader", "postcss-loader"]
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              modules: true,
+              localIdentName: "[local]___[hash:base64:5]"
+            }
+          },
+          {
+            loader: "postcss-loader"
+          }
+        ]
       },
       {
         test: /\.js$/,
@@ -92,20 +120,46 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: "[name].css",
-      publicPath: "/",
-      allChunks: true
-    }),
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify(isProd ? "production" : "development")
-      }
-    }),
     new webpack.ProvidePlugin({
-      "es6-promise": "es6-promise",
       fetch:
         "imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch"
-    })
-  ]
+    }),
+    new MiniCssExtractPlugin(),
+    isProd
+      ? new PurgecssPlugin({
+          whitelist: [
+            "*",
+            "button",
+            "img",
+            "input",
+            "optgroup",
+            "select",
+            "textarea",
+            /\[.*\]/,
+            /::.+/
+          ],
+          paths: [
+            ...glob.sync(`${path.resolve("src")}/**/*.js`, { nodir: true })
+          ],
+          extractors: [
+            {
+              extractor: TailwindExtractor,
+              extensions: ["html", "js"]
+            }
+          ]
+        })
+      : null,
+    new HtmlWebpackPlugin({
+      title: "Mithril Redux",
+      meta: {
+        viewport: "width=device-width, initial-scale=1, shrink-to-fit=no"
+      }
+    }),
+    isProd
+      ? new PreloadWebpackPlugin({
+          rel: "preload",
+          include: "allChunks"
+        })
+      : null
+  ].filter(p => p)
 };
