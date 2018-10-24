@@ -1,5 +1,5 @@
 import m from "mithril";
-import { defaultMapStateToProps, getConnect as connect } from "midux";
+import { defaultMapStateToProps, connect } from "midux";
 
 import { addCount } from "@/actions/counter";
 
@@ -21,4 +21,4 @@ const Counter = {
   }
 };
 
-export default connect()(defaultMapStateToProps, { addCount })(Counter);
+export default connect(defaultMapStateToProps, { addCount })(Counter);

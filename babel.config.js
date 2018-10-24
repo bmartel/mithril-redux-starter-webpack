@@ -1,4 +1,7 @@
-module.exports = function() {
+module.exports = function(api) {
+
+  api.cache.using(() => process.env.NODE_ENV === 'production');
+
   const presets = [
     ["@babel/preset-env", { useBuiltIns: "entry", shippedProposals: true }]
   ];
