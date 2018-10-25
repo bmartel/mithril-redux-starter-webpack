@@ -11,7 +11,12 @@
     "prebuild:dev": "npm run clean",
     "clean": "rimraf build && mkdir build",
     "test": "mocha --compilers css:./test-compiler,js:babel-core/register --recursive",
-    "lint": "eslint --fix --ext .js,.css src config"
+    "lint": "eslint --fix --ext .js,.css src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{js,css}": ["npm run lint", "git add"]
