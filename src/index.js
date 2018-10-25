@@ -14,6 +14,6 @@ m.route(
   "/", // eslint-disable-line
   {
     "/": { view: () => m(Home) },
-    "/counter": { view: () => m(Counter) }
+    "/counter": { view: () => m(Counter) },
   }
 );
