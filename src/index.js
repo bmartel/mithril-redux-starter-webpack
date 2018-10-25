@@ -1,19 +1,19 @@
+import "@babel/polyfill";
 import m from "mithril";
 
 import "@/store";
 import Counter from "@/containers/counter";
 import Home from "@/containers/home";
 
-import "@/app.css";
-import "@/app.html";
+import "@/index.css";
 
 m.route.mode = "#";
 
 m.route(
-  document.getElementById("app"),
+  document.getElementById("root"),
   "/", // eslint-disable-line
   {
     "/": { view: () => m(Home) },
-    "/counter": { view: () => m(Counter) }
+    "/counter": { view: () => m(Counter) },
   }
 );

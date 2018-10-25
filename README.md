@@ -18,13 +18,14 @@
 
 ```
 $ yarn install
-$ yarn watch
+$ yarn start
 ```
 
 and navigate to http://localhost:9000
 
 # commands
 
-* `yarn build` - build js for production
-* `yarn watch` - automatically build js on file changes for development
-* `yarn lint` - lint all files
+* `yarn build` - production build of assets for deployment
+* `yarn build:dev` - development build of assets
+* `yarn start` - automatically build assets on file changes and start a development server with hot reload.
+* `yarn lint` - lint all files and fix with eslint and prettier
