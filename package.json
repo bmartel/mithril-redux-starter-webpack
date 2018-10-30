@@ -10,35 +10,44 @@
     "build:dev": "NODE_ENV=development webpack --config ./config/webpack.dev.js",
     "prebuild:dev": "npm run clean",
     "clean": "rimraf build && mkdir build",
+    "preserve": "npm run build",
+    "serve": "NODE_ENV=production node ./server/index.js",
     "test": "mocha --compilers css:./test-compiler,js:babel-core/register --recursive",
     "lint": "eslint --fix --ext .js,.css src"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.{js,css}": ["npm run lint", "git add"]
+    "*.{js,css}": [
+      "npm run lint",
+      "git add"
+    ]
   },
   "dependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "ignore-styles": "^5.0.1",
     "lodash": "^4.17.11",
+    "md5-file": "^4.0.0",
     "midux": "^2.1.1",
     "mithril": "^1.1.6",
+    "mixx": "ssh://git@github.com:bmartel/mixx.git",
+    "morgan": "^1.9.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
     "autoprefixer": "^9.2.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
-    "babel-register": "^6.26.0",
     "chai": "^4.2.0",
     "css-loader": "^1.0.0",
     "eslint": "^5.7.0",
@@ -94,5 +103,9 @@
     "node": ">=8.0.0",
     "npm": ">=4.0.0"
   },
-  "browserslist": ["> 2%", "last 2 versions", "not ie < 11"]
+  "browserslist": [
+    "> 2%",
+    "last 2 versions",
+    "not ie < 11"
+  ]
 }

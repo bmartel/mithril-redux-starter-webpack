@@ -11,11 +11,13 @@ if (process.env.NODE_ENV !== "production") {
   middleware.push(logger);
 }
 
-const store = createStore(
-  {
-    page,
-    count
-  },
-  window.__INITIAL_STATE__,
-  middleware
-); // eslint-disable-line
+export default (state, url) => {
+  return createStore(
+    {
+      page,
+      count,
+    },
+    state,
+    middleware
+  ); // eslint-disable-line
+};
