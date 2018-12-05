@@ -32,9 +32,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(cookieParser());
-app.use(express.Router().get("/", mixx.middleware));
+app.use(express.Router().get("/", mixx.middleware()));
 app.use(express.static(buildDir));
-app.use(mixx.middleware);
+app.use(mixx.middleware());
 
 // Loadable.preloadAll().then(() => {
 app.listen(PORT, console.log(`App listening on port ${PORT}!`));
