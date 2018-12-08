@@ -1,6 +1,6 @@
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import { createStore, connect } from "midux";
+import { createStore } from "midux";
 
 import count from "@/reducers/counter";
 import page from "@/reducers/page";

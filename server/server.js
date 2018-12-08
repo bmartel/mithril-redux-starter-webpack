@@ -23,18 +23,16 @@ const mixx = Mixx.express({
   manifest: `${buildDir}/asset-manifest.json`,
   createSession(cookies) {},
   createStore,
+  routes,
 });
-
-mixx.router(routes, "/", "#root");
 
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(cookieParser());
-app.use(express.Router().get("/", mixx.middleware()));
-app.use(express.static(buildDir));
 app.use(mixx.middleware());
+app.use(express.static(buildDir));
 
 // Loadable.preloadAll().then(() => {
 app.listen(PORT, console.log(`App listening on port ${PORT}!`));
