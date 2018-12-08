@@ -12,6 +12,7 @@ const output = {
     chunkFilename: `static/css/[name]${isProd ? ".[contenthash:6]" : ""}.chunk.css`,
   },
   mixx: "./build/mixx.json",
+  manifest: "asset-manifest.json",
 };
 
 const template = {

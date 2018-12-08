@@ -7,7 +7,6 @@ import express from "express";
 import morgan from "morgan";
 import path from "path";
 import cookieParser from "cookie-parser";
-// import Loadable from "mixx/loadable";
 
 import appShell from "../src/app";
 import createStore from "../src/store";
@@ -31,12 +30,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(cookieParser());
-app.use(mixx.middleware());
+app.use(express.Router().get("/", mixx.middleware()));
 app.use(express.static(buildDir));
 
-// Loadable.preloadAll().then(() => {
-app.listen(PORT, console.log(`App listening on port ${PORT}!`));
-// })
+Mixx.Loadable.preloadAll().then(() => {
+  app.listen(PORT, console.log(`App listening on port ${PORT}!`));
+});
 
 // Handle the bugs somehow
 app.on("error", error => {

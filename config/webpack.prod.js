@@ -96,12 +96,17 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
     new HtmlWebpackPlugin(config.html),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
     new InterpolateHtmlPlugin(HtmlWebpackPlugin, config.template),
     new MiniCssExtractPlugin(config.output.css),
     new ManifestPlugin({
-      fileName: "asset-manifest.json",
+      fileName: config.output.manifest,
       publicPath: config.output.publicPath,
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
@@ -117,7 +122,7 @@ module.exports = {
     }),
     new WorkboxWebpackPlugin.GenerateSW({
       clientsClaim: true,
-      exclude: [/\.map$/, /asset-manifest\.json$/],
+      exclude: [/\.map$/, new RegExp(config.output.manifest)],
       importWorkboxFrom: "cdn",
       navigateFallback: config.output.publicPath + "index.html",
       navigateFallbackBlacklist: [new RegExp("^/_"), new RegExp("/[^/]+\\.[^/]+$")],
