@@ -12,6 +12,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurgeCssPlugin = require("purgecss-webpack-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
+const MixxWebpack = require("mixx/webpack");
 
 const config = require("./config");
 const utils = require("./utils");
@@ -122,6 +123,9 @@ module.exports = {
       navigateFallbackBlacklist: [new RegExp("^/_"), new RegExp("/[^/]+\\.[^/]+$")],
     }),
     new WebpackPwaManifest(config.pwa),
+    new MixxWebpack.LoadablePlugin({
+      filename: config.output.mixx,
+    }),
   ],
   node: {
     dgram: "empty",
