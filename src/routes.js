@@ -1,11 +1,9 @@
 import m from "mithril";
-
-import Counter from "@/containers/counter";
-import Home from "@/containers/home";
+import { resolve } from "mixx/util";
 
 m.route.prefix(process.env.NODE_ENV === "production" ? "" : "#");
 
 export default {
-  "/": { view: () => m(Home) },
-  "/counter": { view: () => m(Counter) },
+  "/": { onmatch: () => resolve(import("@/containers/home")) },
+  "/counter": { onmatch: () => resolve(import("@/containers/counter")) },
 };

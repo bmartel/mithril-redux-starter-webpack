@@ -6,7 +6,7 @@ import store from "@/store";
 
 import "@/index.css";
 
-if (typeof document !== "undefined") {
+if (typeof window !== "undefined") {
   store(window.__INITIAL_STATE__);
 
   m.route(
