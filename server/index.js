@@ -17,7 +17,7 @@ register(ignoreStyles.DEFAULT_EXTENSIONS, (mod, filename) => {
     return ignoreStyles.noOp();
   } else {
     // If we find an image
-    const hash = md5File.sync(filename).slice(0, 8);
+    const hash = md5File.sync(filename).slice(0, 6);
     const bn = path.basename(filename).replace(/(\.\w{3})$/, `.${hash}$1`);
 
     mod.exports = `/static/media/${bn}`;
