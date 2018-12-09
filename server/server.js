@@ -9,21 +9,19 @@ import morgan from "morgan";
 import path from "path";
 import cookieParser from "cookie-parser";
 
-import appShell from "../src/app";
+import App from "../src/index";
 import createStore from "../src/store";
-import routes from "../src/routes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const buildDir = path.resolve(__dirname, "../build");
 
 const mixx = MixxExpress({
-  app: appShell,
-  html: `${buildDir}/index.html`,
-  manifest: `${buildDir}/asset-manifest.json`,
+  html: `${buildDir}/app.html`,
+  manifest: `${buildDir}/mixx.json`,
   createSession(cookies) {},
   createStore,
-  routes,
+  routes: App.routes,
 });
 
 app.use(compression());
@@ -31,8 +29,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(cookieParser());
-app.use(express.Router().get("/", mixx.middleware()));
 app.use(express.static(buildDir));
+app.use(mixx.middleware());
 
 Mixx.preloadAll().then(() => {
   app.listen(PORT, console.log(`App listening on port ${PORT}!`));

@@ -6,10 +6,14 @@ import store from "@/store";
 
 import "@/index.css";
 
-store(window.__INITIAL_STATE__);
+if (typeof document !== "undefined") {
+  store(window.__INITIAL_STATE__);
 
-m.route(
-  document.getElementById("root"),
-  "/", // eslint-disable-line
-  routes
-);
+  m.route(
+    document.getElementById("root"),
+    "/", // eslint-disable-line
+    routes
+  );
+}
+
+export default { routes };
