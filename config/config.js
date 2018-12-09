@@ -53,7 +53,7 @@ const pwa = {
   inject: true,
   icons: [
     {
-      src: utils.resolve("src/assets/img/icon.png"),
+      src: utils.resolve("src/assets/img/mithril-logo.png"),
       sizes: [96, 128, 192, 256, 384, 512],
     },
   ],
