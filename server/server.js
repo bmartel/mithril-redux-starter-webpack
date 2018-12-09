@@ -1,6 +1,7 @@
 require("mithril/test-utils/browserMock")(global);
 
 import Mixx from "mixx";
+import { express as MixxExpress } from "mixx/loader";
 import bodyParser from "body-parser";
 import compression from "compression";
 import express from "express";
@@ -16,7 +17,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const buildDir = path.resolve(__dirname, "../build");
 
-const mixx = Mixx.express({
+const mixx = MixxExpress({
   app: appShell,
   html: `${buildDir}/index.html`,
   manifest: `${buildDir}/asset-manifest.json`,
@@ -33,7 +34,7 @@ app.use(cookieParser());
 app.use(express.Router().get("/", mixx.middleware()));
 app.use(express.static(buildDir));
 
-Mixx.Loadable.preloadAll().then(() => {
+Mixx.preloadAll().then(() => {
   app.listen(PORT, console.log(`App listening on port ${PORT}!`));
 });
 
