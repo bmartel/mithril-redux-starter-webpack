@@ -14,6 +14,7 @@ const Home = {
 
     return m(".flex.w-full.justify-center.mt-4", [
       m(".mx-4.w-full.sm:w-1/2.md:w-1/3.flex.flex-col.items-center", [
+        // m(LoadableLogo),
         m("h1", title),
         m("input.w-full.border.py-2.px-3.my-3", {
           oninput: e => actions.updateTitle(e.target.value),
