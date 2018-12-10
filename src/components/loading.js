@@ -1,4 +1,5 @@
 import m from "mithril";
+import "./loader.css";
 
 const Loading = {
   view(vnode) {
@@ -6,7 +7,7 @@ const Loading = {
     if (error) {
       return m("div", ["Error! ", m("button", { onclick: retry }, "Retry")]);
     } else if (pastDelay) {
-      return m("div", "Loading...");
+      return m("div.loader", "Loading...");
     } else {
       return null;
     }

@@ -63,7 +63,12 @@ const paths = {
   app: utils.resolve("src"),
   public: utils.ensureSlash(output.publicPath, true),
   entry: utils.resolve("src/index.js"),
-  js: [utils.resolve("src"), utils.resolve("test"), utils.resolve("node_modules/midux")],
+  js: [
+    utils.resolve("src"),
+    utils.resolve("test"),
+    utils.resolve("node_modules/midux"),
+    utils.resolve("node_modules/mixx"),
+  ],
 };
 
 module.exports = {
