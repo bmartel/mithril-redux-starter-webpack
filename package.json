@@ -16,7 +16,10 @@
         "lint": "eslint --fix --ext .js,.css src"
     },
     "lint-staged": {
-        "*.{js,css}": ["npm run lint", "git add"]
+        "*.{js,css}": [
+            "npm run lint",
+            "git add"
+        ]
     },
     "dependencies": {
         "@babel/core": "^7.1.2",
@@ -35,7 +38,7 @@
         "md5-file": "^4.0.0",
         "midux": "^2.2.0",
         "mithril": "1.1.6",
-        "mitts": "ssh://git@github.com:bmartel/mitts.git",
+        "mitts": "0.1.0",
         "morgan": "^1.9.1",
         "redux": "^4.0.1",
         "redux-logger": "^3.0.6",
@@ -99,5 +102,9 @@
         "node": ">=8.0.0",
         "npm": ">=4.0.0"
     },
-    "browserslist": ["> 2%", "last 2 versions", "not ie < 11"]
+    "browserslist": [
+        "> 2%",
+        "last 2 versions",
+        "not ie < 11"
+    ]
 }

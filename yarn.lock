@@ -3394,6 +3394,11 @@ extsprintf@^1.2.0:
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
 
+fast-decode-uri-component@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/fast-decode-uri-component/-/fast-decode-uri-component-1.0.0.tgz#7ce10336aa4b26286fee93d71e6785ff0f596a33"
+  integrity sha512-WQSYVKn6tDW/3htASeUkrx5LcnuTENQIZQPCVlwdnvIJ7bYtSpoJYq38MgUJnx1CQIR1gjZ8HJxAEcN4gqugBg==
+
 fast-deep-equal@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-1.1.0.tgz#c053477817c86b51daa853c81e059b733d023614"
@@ -3541,6 +3546,15 @@ find-cache-dir@^2.0.0:
     commondir "^1.0.1"
     make-dir "^1.0.0"
     pkg-dir "^3.0.0"
+
+find-my-way@^1.15.4:
+  version "1.15.4"
+  resolved "https://registry.yarnpkg.com/find-my-way/-/find-my-way-1.15.4.tgz#3b1da909347022e0b5ed94ecaaabf6d99096edd6"
+  integrity sha512-3XPCOhoGMPK6ELgUHd5BuNxsL+fTNM0EIrTlcLwjT2uZq22UHL4IQt5N54PIQblk164ioZATRov9mcuA4RB3eA==
+  dependencies:
+    fast-decode-uri-component "^1.0.0"
+    safe-regex "^1.1.0"
+    semver-store "^0.3.0"
 
 find-parent-dir@^0.3.0:
   version "0.3.0"
@@ -5486,10 +5500,10 @@ mississippi@^3.0.0:
     stream-each "^1.1.0"
     through2 "^2.0.0"
 
-mithril-node-render@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/mithril-node-render/-/mithril-node-render-2.3.0.tgz#7b12e6d410f33a7ac04926ebcfbe043eb402372b"
-  integrity sha512-cAN1VDiBY1wBcDzJiKn6QO+xcSWYyKsMxG10SmTUsV+iXPdp+Ibxgd2c4c6N4WeboGMonG3BGwtwUW4Xm62vuw==
+mithril-node-render@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/mithril-node-render/-/mithril-node-render-2.3.1.tgz#b3f6042f5170eddebdfddcc69221a527f34a263b"
+  integrity sha512-WKM/s1+Xc45eYirvNlRYDJ1ZyY9FtzNTvcq18p0qlJ7c5Z2noCLgOb3aNhK0dtUAB+4+2xRCP5kkPLAnNDsXnQ==
   dependencies:
     co "4.6.0"
 
@@ -5506,6 +5520,14 @@ mithril@1.1.6:
   resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.6.tgz#bd2cc0de3d3c86076a6a7a30367a601a1bd108f3"
   integrity sha512-fWcUrQTCqu8M916rj1MFGlHaPh65rznPu6U/N2U9g81H89klDCIptSK5bnkNkC+jyi3sJIXjyGhSQjUnR8jzZA==
 
+mitts@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/mitts/-/mitts-0.1.0.tgz#29bb96d49975297af1039d27ce4119cf96ce7a50"
+  integrity sha512-5T1g1snZKw5Ypw1iEmbJBjsEVZgzWdwtUeJytnh/e+hODWGMZUfp3gqpGvdzpGfxH6LVVq5xVimvybKWeHDnmA==
+  dependencies:
+    find-my-way "^1.15.4"
+    mithril-node-render "^2.3.1"
+
 mixin-deep@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/mixin-deep/-/mixin-deep-1.3.1.tgz#a49e7268dce1a0d9698e45326c5626df3543d0fe"
@@ -5513,17 +5535,6 @@ mixin-deep@^1.2.0:
   dependencies:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
-
-"mitts@ssh://git@github.com:bmartel/mitts.git":
-  version "0.1.0"
-  resolved "ssh://git@github.com:bmartel/mitts.git#9e29a17d8f893d2b5ebf1116d7d3de53ea0daed5"
-  dependencies:
-    "@babel/core" "^7.1.2"
-    "@babel/plugin-syntax-dynamic-import" "^7.0.0"
-    "@babel/preset-env" "^7.1.0"
-    "@babel/register" "^7.0.0"
-    babel-plugin-dynamic-import-node "^2.2.0"
-    mithril-node-render "^2.3.0"
 
 mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.1"
@@ -7567,6 +7578,11 @@ semver-compare@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
   integrity sha1-De4hahyUGrN+nvsXiPavxf9VN/w=
+
+semver-store@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/semver-store/-/semver-store-0.3.0.tgz#ce602ff07df37080ec9f4fb40b29576547befbe9"
+  integrity sha512-TcZvGMMy9vodEFSse30lWinkj+JgOBvPn8wRItpQRSayhc+4ssDs335uklkfvQQJgL/WvmHLVj4Ycv2s7QCQMg==
 
 "semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1:
   version "5.6.0"
