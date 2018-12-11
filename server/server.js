@@ -9,8 +9,8 @@ import morgan from "morgan";
 import path from "path";
 import cookieParser from "cookie-parser";
 
-import App from "../src/index";
-import createStore from "../src/store";
+import "../src/index";
+import { routes, store as createStore } from "mixx/hydrate";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,7 +21,7 @@ const mixx = MixxExpress({
   manifest: `${buildDir}/mixx.json`,
   createSession(cookies) {},
   createStore,
-  routes: App.routes,
+  routes,
 });
 
 app.use(compression());

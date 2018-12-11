@@ -1,19 +1,9 @@
 import "@babel/polyfill";
 import m from "mithril";
-
+import hydrate from "mixx/hydrate";
 import routes from "@/routes";
 import store from "@/store";
 
 import "@/index.css";
 
-if (typeof document !== "undefined") {
-  store(window.__INITIAL_STATE__);
-
-  m.route(
-    document.getElementById("root"),
-    "/", // eslint-disable-line
-    routes
-  );
-}
-
-export default { routes };
+hydrate(m, routes, store);

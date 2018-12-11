@@ -29,6 +29,10 @@
  * @import "components/forms";
  */
 
+body {
+  @apply .font-sans;
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

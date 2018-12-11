@@ -111,12 +111,12 @@ module.exports = {
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new PurgeCssPlugin({
-      whitelist: ["*", "button", "img", "input", "optgroup", "select", "textarea", /\[.*\]/, /::.+/],
-      paths: [...glob.sync(`${config.paths.app}/**/*.js`, { nodir: true })],
+      whitelist: ["*", "button", "img", "input", "optgroup", "select", "textarea", "body", "html", /\[.*\]/, /::.+/],
+      paths: [...glob.sync(`${config.paths.app}/**/*.js`, { nodir: true }), config.html.template],
       extractors: [
         {
           extractor: utils.TailwindExtractor,
-          extensions: ["html", "js"],
+          extensions: ["html", "hbs", "js"],
         },
       ],
     }),
