@@ -1,8 +1,8 @@
 import m from "mithril";
-import Mixx from "mixx";
+import Mitts from "mitts";
 import Loading from "@/components/loading";
 
-const LoadableLogo = Mixx({
+const LoadableLogo = Mitts({
   loader: () => import("@/components/logo"),
   loading: Loading,
   delay: 300, // 0.3 seconds

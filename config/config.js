@@ -11,7 +11,7 @@ const output = {
     filename: `static/css/[name]${isProd ? ".[contenthash:6]" : ""}.css`,
     chunkFilename: `static/css/[name]${isProd ? ".[contenthash:6]" : ""}.chunk.css`,
   },
-  mixx: "./build/mixx.json",
+  mitts: "./build/mitts.json",
   manifest: "asset-manifest.json",
 };
 
@@ -67,7 +67,7 @@ const paths = {
     utils.resolve("src"),
     utils.resolve("test"),
     utils.resolve("node_modules/midux"),
-    utils.resolve("node_modules/mixx"),
+    utils.resolve("node_modules/mitts"),
   ],
 };
 

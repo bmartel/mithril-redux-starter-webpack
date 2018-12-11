@@ -1,9 +1,9 @@
 import "@babel/polyfill";
 import m from "mithril";
-import hydrate from "mixx/hydrate";
+import hydrate from "mitts/hydrate";
 import routes from "@/routes";
 import store from "@/store";
 
 import "@/index.css";
 
-hydrate(m, routes, store);
+export default hydrate(m, routes, store);

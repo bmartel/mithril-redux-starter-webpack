@@ -1,7 +1,7 @@
 require("mithril/test-utils/browserMock")(global);
 
-import Mixx from "mixx";
-import { express as MixxExpress } from "mixx/loader";
+import Mitts from "mitts";
+import { express as MittsExpress } from "mitts/loader";
 import bodyParser from "body-parser";
 import compression from "compression";
 import express from "express";
@@ -9,19 +9,18 @@ import morgan from "morgan";
 import path from "path";
 import cookieParser from "cookie-parser";
 
-import "../src/index";
-import { routes, store as createStore } from "mixx/hydrate";
+import client from "../src/index";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const buildDir = path.resolve(__dirname, "../build");
 
-const mixx = MixxExpress({
+const mitts = MittsExpress({
   html: `${buildDir}/app.html`,
-  manifest: `${buildDir}/mixx.json`,
+  manifest: `${buildDir}/mitts.json`,
   createSession(cookies) {},
-  createStore,
-  routes,
+  createStore: client.store,
+  routes: client.routes,
 });
 
 app.use(compression());
@@ -30,9 +29,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(express.static(buildDir));
-app.use(mixx.middleware());
+app.use(mitts.middleware());
 
-Mixx.preloadAll().then(() => {
+Mitts.preloadAll().then(() => {
   app.listen(PORT, console.log(`App listening on port ${PORT}!`));
 });
 

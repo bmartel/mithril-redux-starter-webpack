@@ -12,7 +12,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurgeCssPlugin = require("purgecss-webpack-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
-const { LoadablePlugin } = require("mixx/webpack");
+const { LoadablePlugin } = require("mitts/webpack");
 
 const config = require("./config");
 const utils = require("./utils");
@@ -129,7 +129,7 @@ module.exports = {
     }),
     new WebpackPwaManifest(config.pwa),
     new LoadablePlugin({
-      filename: config.output.mixx,
+      filename: config.output.mitts,
     }),
   ],
   node: {

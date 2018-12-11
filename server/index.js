@@ -39,7 +39,7 @@ require("@babel/register")({
     ],
     "@babel/syntax-dynamic-import",
     "babel-plugin-dynamic-import-node",
-    "mixx/babel",
+    "mitts/babel",
   ],
 });
 

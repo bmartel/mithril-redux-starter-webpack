@@ -1,5 +1,5 @@
 import m from "mithril";
-import { resolve } from "mixx/util";
+import { resolve } from "mitts/util";
 
 m.route.prefix(process.env.NODE_ENV === "production" ? "" : "#");
 
