@@ -11,6 +11,8 @@ const output = {
     filename: `static/css/[name]${isProd ? ".[contenthash:6]" : ""}.css`,
     chunkFilename: `static/css/[name]${isProd ? ".[contenthash:6]" : ""}.chunk.css`,
   },
+  mitts: "./build/mitts.json",
+  manifest: "asset-manifest.json",
 };
 
 const template = {
@@ -24,7 +26,7 @@ const html = {
     viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
   },
   inject: true,
-  filename: "index.html",
+  filename: isProd ? "app.html" : "index.html",
   template: utils.resolve("config/template.hbs"),
   minify: {
     removeComments: isProd,
@@ -51,7 +53,7 @@ const pwa = {
   inject: true,
   icons: [
     {
-      src: utils.resolve("src/assets/img/icon.png"),
+      src: utils.resolve("src/assets/img/mithril-logo.png"),
       sizes: [96, 128, 192, 256, 384, 512],
     },
   ],
@@ -61,7 +63,12 @@ const paths = {
   app: utils.resolve("src"),
   public: utils.ensureSlash(output.publicPath, true),
   entry: utils.resolve("src/index.js"),
-  js: [utils.resolve("src"), utils.resolve("test"), utils.resolve("node_modules/midux")],
+  js: [
+    utils.resolve("src"),
+    utils.resolve("test"),
+    utils.resolve("node_modules/midux"),
+    utils.resolve("node_modules/mitts"),
+  ],
 };
 
 module.exports = {

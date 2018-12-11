@@ -109,11 +109,16 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
     new HtmlWebpackPlugin(config.html),
     new MiniCssExtractPlugin(config.output.css),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new ManifestPlugin({
-      fileName: "asset-manifest.json",
+      fileName: config.output.manifest,
       publicPath: config.output.publicPath,
     }),
     new webpack.HotModuleReplacementPlugin(),
