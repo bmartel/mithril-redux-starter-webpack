@@ -5351,10 +5351,10 @@ micromatch@^3.1.10, micromatch@^3.1.4, micromatch@^3.1.8, micromatch@^3.1.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-midux@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/midux/-/midux-2.1.1.tgz#d00cdf81b255d6e43c4e032a78a2fe2630c58aba"
-  integrity sha512-33jInod/NU7RFK5ELEd7f7bn18PQFNBt70s+VfJaoEtWr8lqhSSVFZ8JyR20RAN/+s2SstO4cD6kXiXBCjjVcw==
+midux@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/midux/-/midux-2.2.0.tgz#455b0c0598153a256dfab02138d24efd8cc2e453"
+  integrity sha512-OUTN8/txTF95ZhVuiLtzvH/JOJtxI1NoIcXmHgrqudZH9136gbWqrnXPOOehk6uz+mZ1vx8T7aXxi5xC9nm7Ig==
 
 miller-rabin@^4.0.0:
   version "4.0.1"

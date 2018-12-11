@@ -16,10 +16,7 @@
     "lint": "eslint --fix --ext .js,.css src"
   },
   "lint-staged": {
-    "*.{js,css}": [
-      "npm run lint",
-      "git add"
-    ]
+    "*.{js,css}": ["npm run lint", "git add"]
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
@@ -36,7 +33,7 @@
     "ignore-styles": "^5.0.1",
     "lodash": "^4.17.11",
     "md5-file": "^4.0.0",
-    "midux": "^2.1.1",
+    "midux": "^2.2.0",
     "mithril": "1.1.6",
     "mithril-node-render": "^2.3.0",
     "mixx": "ssh://git@github.com:bmartel/mixx.git",
@@ -104,9 +101,5 @@
     "node": ">=8.0.0",
     "npm": ">=4.0.0"
   },
-  "browserslist": [
-    "> 2%",
-    "last 2 versions",
-    "not ie < 11"
-  ]
+  "browserslist": ["> 2%", "last 2 versions", "not ie < 11"]
 }
