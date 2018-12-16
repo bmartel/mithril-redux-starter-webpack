@@ -5520,10 +5520,10 @@ mithril@1.1.6:
   resolved "https://registry.yarnpkg.com/mithril/-/mithril-1.1.6.tgz#bd2cc0de3d3c86076a6a7a30367a601a1bd108f3"
   integrity sha512-fWcUrQTCqu8M916rj1MFGlHaPh65rznPu6U/N2U9g81H89klDCIptSK5bnkNkC+jyi3sJIXjyGhSQjUnR8jzZA==
 
-mitts@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/mitts/-/mitts-0.1.0.tgz#29bb96d49975297af1039d27ce4119cf96ce7a50"
-  integrity sha512-5T1g1snZKw5Ypw1iEmbJBjsEVZgzWdwtUeJytnh/e+hODWGMZUfp3gqpGvdzpGfxH6LVVq5xVimvybKWeHDnmA==
+mitts@^0.1.0:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/mitts/-/mitts-0.1.2.tgz#4dbcd51dd0490fc8987b7aea1c54261be4e3ab85"
+  integrity sha512-6W7moQRhL7WGoGDdXlncHaQzWphEp1c7hRRDFMdXv2b2079XghrVGG3b1CYIiScIwLJu0qXYxXL2EUca3EKXpg==
   dependencies:
     find-my-way "^1.15.4"
     mithril-node-render "^2.3.1"
