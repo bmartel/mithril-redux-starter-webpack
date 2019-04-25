@@ -68,7 +68,7 @@ module.exports = {
             },
           },
           {
-            test: /\.js$/,
+            test: /\.m?js$/,
             loader: "babel-loader",
             include: config.paths.js,
             options: {
@@ -85,7 +85,7 @@ module.exports = {
             use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
           },
           {
-            exclude: [/\.(js|jsx)$/, /\.html$/, /\.hbs$/, /\.json$/],
+            exclude: [/\.(m?js|jsx)$/, /\.html$/, /\.hbs$/, /\.json$/],
             loader: "file-loader",
             options: {
               name: "static/media/[name].[hash:6].[ext]",
