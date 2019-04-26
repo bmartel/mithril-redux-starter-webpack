@@ -1,4 +1,6 @@
+require("raf/polyfill");
 require("mithril/test-utils/browserMock")(global);
+
 const md5File = require("md5-file");
 const path = require("path");
 const ignoreStyles = require("ignore-styles");
