@@ -55,9 +55,7 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".json"],
-    alias: {
-      "@": config.paths.app,
-    },
+    alias: config.paths.alias,
   },
   output: {
     pathinfo: true,
@@ -81,7 +79,11 @@ module.exports = {
             },
           },
           {
-            test: /\.m?js$/,
+            test: /\.mjs$/,
+            type: "javascript/auto",
+          },
+          {
+            test: /\.js$/,
             loader: "babel-loader",
             include: config.paths.js,
             options: {
@@ -98,7 +100,7 @@ module.exports = {
             loader: "handlebars-loader",
           },
           {
-            exclude: [/\.(m?js|jsx)$/, /\.html$/, /\.hbs$/, /\.json$/],
+            exclude: [/\.(js|jsx)$/, /\.html$/, /\.hbs$/, /\.json$/],
             loader: "file-loader",
             options: {
               name: "static/media/[name].[hash:6].[ext]",
@@ -129,5 +131,6 @@ module.exports = {
     net: "empty",
     tls: "empty",
     child_process: "empty",
+    setImmediate: false,
   },
 };

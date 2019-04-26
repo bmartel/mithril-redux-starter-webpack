@@ -59,8 +59,10 @@ const pwa = {
   ],
 };
 
+const srcPath = utils.resolve("src");
+
 const paths = {
-  app: utils.resolve("src"),
+  app: srcPath,
   public: utils.ensureSlash(output.publicPath, true),
   entry: utils.resolve("src/index.js"),
   js: [
@@ -68,7 +70,11 @@ const paths = {
     utils.resolve("test"),
     utils.resolve("node_modules/midux"),
     utils.resolve("node_modules/mitts"),
+    utils.resolve("node_modules/mithril"),
   ],
+  alias: {
+    "@": srcPath,
+  },
 };
 
 module.exports = {

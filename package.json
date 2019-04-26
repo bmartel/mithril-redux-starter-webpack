@@ -34,7 +34,7 @@
     "lodash": "^4.17.11",
     "md5-file": "^4.0.0",
     "midux": "^2.2.0",
-    "mithril": "1.1.6",
+    "mithril": "2.0.0-rc.4",
     "mitts": "^0.1.0",
     "morgan": "^1.9.1",
     "redux": "^4.0.1",
@@ -96,8 +96,8 @@
     "workbox-webpack-plugin": "^3.6.3"
   },
   "engines": {
-    "node": ">=8.0.0",
+    "node": ">=9.0.0",
     "npm": ">=4.0.0"
   },
-  "browserslist": ["> 2%", "last 2 versions", "not ie < 11"]
+  "browserslist": ["> 1%", "last 2 versions"]
 }
