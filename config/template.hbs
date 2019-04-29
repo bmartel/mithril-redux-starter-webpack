@@ -1,8 +1,15 @@
-<!DOCTYPE html>
+CTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="{{htmlWebpackPlugin.options.templateVars.publicUrl}}/favicon.ico">
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="{{ htmlWebpackPlugin.options.templateVars.publicUrl }}/favicon.ico" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker.register("{{htmlWebpackPlugin.options.templateVars.publicUrl}}/service-worker.js");
+        });
+      }
+    </script>
   </head>
   <body class="app">
     <div id="root"></div>

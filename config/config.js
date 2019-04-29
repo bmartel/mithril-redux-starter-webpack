@@ -26,7 +26,7 @@ const html = {
     viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
   },
   inject: true,
-  filename: isProd ? "app.html" : "index.html",
+  filename: "index.html",
   template: utils.resolve("config/template.hbs"),
   minify: {
     removeComments: isProd,
