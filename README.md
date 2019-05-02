@@ -16,8 +16,10 @@ A full development ecosystem is preconfigured to work immediately with webpack v
   - [midux - mithril redux adapter](https://github.com/bmartel/midux)
   - [logger](https://github.com/LogRocket/redux-logger)
   - [thunk](https://github.com/reduxjs/redux-thunk)
+  
  Or
- - [mirtx](https://github.com/bmartel/mirtx)
+ 
+- [mirtx](https://github.com/bmartel/mirtx)
 
 4. Styling: [postcss](https://github.com/postcss/postcss) with:
 
@@ -29,8 +31,10 @@ A full development ecosystem is preconfigured to work immediately with webpack v
 - [mocha](https://github.com/mochajs/mocha)
 - [chai](https://github.com/chaijs/chai)
 - [sinon](https://github.com/sinonjs/sinon)
+
 Or
-- [jest](https://github.com/facebook/jest
+
+- [jest](https://github.com/facebook/jest)
 
 6. Code styles:
 
